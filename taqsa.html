@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Propuesta conceptual TAQSA × Reforestall para estimar y compensar el impacto de viajes por la Patagonia.">
+  <title>TAQSA × Reforestall — Viajes con impacto positivo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#f7f3e8;--forest:#10200c;--forest-2:#182f16;--paper:#f3f0e5;--text:#182016;--muted:#697064;--lime:#b4d56c;--ice:#a8dbe5;--gold:#d89737;--line:rgba(247,243,232,.15);--display:"Fraunces",serif;--body:"Inter",sans-serif;--mono:"Space Mono",monospace}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--paper);color:var(--text);font-family:var(--body)} button,a{font:inherit} a{color:inherit}
+    .scroll-progress{position:fixed;z-index:20;top:0;left:0;width:var(--scroll-progress,0%);height:3px;background:linear-gradient(90deg,var(--lime),var(--ice),var(--gold));box-shadow:0 0 16px rgba(180,213,108,.45);pointer-events:none}
+    .nav{position:absolute;z-index:3;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;max-width:1240px;margin:auto;padding:26px 28px;color:white}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-size:22px}.brand-dot{width:10px;height:10px;border-radius:50%;background:var(--lime)}
+    .proposal-pill{padding:10px 15px;border:1px solid rgba(255,255,255,.35);border-radius:999px;font:12px var(--mono);text-transform:uppercase;letter-spacing:.08em;background:rgba(8,18,7,.28);backdrop-filter:blur(8px)}
+    .hero{position:relative;min-height:780px;color:white;background:linear-gradient(90deg,rgba(8,18,7,.91) 0%,rgba(8,18,7,.68) 48%,rgba(8,18,7,.22) 100%),url("https://taqsa.com.ar/wp-content/uploads/2023/06/el_chalten.jpeg") center calc(50% + var(--hero-shift,0px))/cover;display:flex;align-items:flex-end}
+    .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,18,7,.7),transparent 50%);pointer-events:none}.hero-inner{position:relative;z-index:1;width:min(1184px,calc(100% - 48px));margin:0 auto;padding:180px 0 86px}.hero-inner>*{animation:heroIn .75s both}.hero-inner h1{animation-delay:.08s}.hero-copy{animation-delay:.17s}.facts{animation-delay:.26s}
+    .eyebrow{font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--lime);margin:0 0 20px}.hero h1{font:500 clamp(46px,7vw,88px)/.98 var(--display);max-width:850px;margin:0 0 28px}.hero-copy{font-size:19px;line-height:1.65;max-width:700px;color:rgba(255,255,255,.82);margin:0}
+    .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:60px;border:1px solid var(--line);max-width:850px;background:var(--line)}.fact{padding:22px 24px;background:rgba(9,20,8,.62)}.fact small{display:block;font:11px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:7px}.fact strong{font-size:17px}
+    .route-strip{overflow:hidden;background:var(--gold);color:#172012;border-block:1px solid rgba(16,32,12,.22)}.route-strip-track{display:flex;width:max-content;animation:routeMove 24s linear infinite}.route-strip span{padding:13px 25px;font:700 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}.route-strip i{color:rgba(23,32,18,.45);font-style:normal}
+    .section{width:min(1120px,calc(100% - 48px));margin:auto;padding:82px 0}.intro{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;align-items:start}.intro h2,.process h2,.closing h2{font:500 clamp(38px,5vw,62px)/1.08 var(--display);margin:0}.intro-copy{font-size:18px;line-height:1.7;color:var(--muted);margin:0}.source-link{display:inline-flex;margin-top:25px;font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
+    .calculator{background:var(--forest);color:var(--ink);border-radius:24px;overflow:hidden;box-shadow:0 24px 60px rgba(27,47,20,.18);animation:rise .7s ease both}.calc-head{padding:32px 36px 18px}.calc-head h2{font:500 clamp(29px,3.4vw,42px) var(--display);margin:6px 0 8px}.calc-head p{color:rgba(247,243,232,.6);margin:0}.routes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:12px 36px 28px}.route{position:relative;overflow:hidden;appearance:none;text-align:left;color:var(--ink);background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:15px;padding:18px 19px;cursor:pointer;transition:transform .25s ease,background .25s ease,border-color .25s ease}.route:after{content:"→";position:absolute;right:18px;top:15px;color:var(--lime);opacity:0;transform:translateX(-8px);transition:.25s}.route:hover,.route.active{transform:translateY(-3px);border-color:var(--lime);background:rgba(180,213,108,.09)}.route:hover:after,.route.active:after{opacity:1;transform:none}.route small{display:block;font:11px var(--mono);color:var(--ice);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}.route strong{display:block;font-size:17px;line-height:1.3;margin-bottom:6px;padding-right:22px}.route span{color:rgba(247,243,232,.52);font-size:12.5px;line-height:1.45}
+    .calc-body{display:grid;grid-template-columns:.9fr 1.1fr;border-top:1px solid var(--line)}.controls{padding:32px 36px}.control-label{font:11px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:rgba(247,243,232,.5)}.counter{display:flex;align-items:center;gap:17px;margin:15px 0 24px}.counter button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:transparent;color:white;font-size:21px;cursor:pointer;transition:.2s}.counter button:hover{background:var(--lime);color:var(--forest);transform:scale(1.06)}.counter output{font:500 39px var(--display);min-width:44px;text-align:center}.note{font-size:11.5px;line-height:1.55;color:rgba(247,243,232,.5);border-left:2px solid var(--lime);padding-left:14px}
+    .result{position:relative;background:radial-gradient(circle at 15% 10%,rgba(180,213,108,.12),transparent 35%),var(--forest-2);padding:32px 36px;display:flex;flex-direction:column;justify-content:center}.result:before{content:"";position:absolute;top:0;left:0;width:var(--impact-width,32%);height:3px;background:linear-gradient(90deg,var(--lime),var(--ice));transition:width .45s ease}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:22px}.metric.token{grid-column:1/-1;padding-top:16px;border-top:1px solid var(--line)}.metric small{display:block;font:10px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:rgba(247,243,232,.45);margin-bottom:6px}.metric strong{font:500 32px var(--display);transition:transform .2s ease}.metric strong.compact{font-size:22px}.demo-button{border:0;border-radius:999px;padding:14px 20px;background:var(--gold);color:#1a1e14;font-weight:700;cursor:pointer;transition:.22s}.demo-button:hover{transform:translateY(-2px);background:#e4a641;box-shadow:0 10px 25px rgba(216,151,55,.2)}.demo-caption{text-align:center;font-size:10px;line-height:1.5;color:rgba(247,243,232,.42);margin:10px 8px 0}
+    .process{background:#e9e7da}.process-wrap{width:min(1120px,calc(100% - 48px));margin:auto;padding:88px 0}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(24,32,22,.13);margin-top:44px}.step{background:#e9e7da;padding:34px 26px;min-height:180px;transition:.25s}.step:hover{background:#f2efe4;transform:translateY(-4px)}.step h3{font:500 22px var(--display);margin:0 0 12px}.step p{color:var(--muted);font-size:14px;line-height:1.6;margin:0}
+    .closing{position:relative;isolation:isolate;overflow:hidden;min-height:560px;color:var(--ink);background:linear-gradient(135deg,#123137,var(--forest) 58%,#0a1708)}.closing:before{content:"";position:absolute;z-index:-1;width:720px;height:720px;left:50%;top:50%;translate:-50% -50%;rotate:var(--ring-rotation,0deg);border:1px solid rgba(168,219,229,.11);border-radius:50%;box-shadow:0 0 0 115px rgba(180,213,108,.025),0 0 0 230px rgba(168,219,229,.018);transition:rotate .1s linear}.closing:after{content:"";position:absolute;z-index:-1;width:480px;height:480px;right:-100px;bottom:-230px;border-radius:50%;background:radial-gradient(circle,rgba(180,213,108,.14),rgba(168,219,229,.04) 45%,transparent 70%);transform:translate3d(var(--orb-x,0),var(--orb-y,0),0)}.closing-inner{width:min(1120px,calc(100% - 48px));min-height:560px;margin:auto;padding:105px 0;display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:end}.closing h2{max-width:680px;text-shadow:0 8px 35px rgba(0,0,0,.35)}.closing p{font-size:18px;line-height:1.7;color:rgba(247,243,232,.7);margin:0}.footer{background:#091307;color:rgba(247,243,232,.5);font-size:13px}.footer-inner{width:min(1184px,calc(100% - 48px));margin:auto;padding:30px 0;display:flex;justify-content:space-between;gap:20px}.footer a{color:var(--ice);text-decoration:none}
+    @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+    @keyframes heroIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+    @keyframes routeMove{to{transform:translateX(-50%)}}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
+    .scene{translate:0 var(--scene-y,0px);scale:var(--scene-scale,1);will-change:translate,scale;transition:translate .12s linear,scale .12s linear}
+    @media(max-width:800px){.nav{padding:20px}.hero{min-height:650px;background-position:62% center}.hero-inner{width:calc(100% - 40px);padding:145px 0 58px}.hero h1{font-size:clamp(40px,12vw,60px)}.hero-copy{font-size:16px}.facts,.routes,.steps{grid-template-columns:1fr}.facts{margin-top:38px;max-width:none}.intro,.calc-body,.closing-inner{grid-template-columns:1fr}.intro{gap:28px}.section{width:calc(100% - 32px);padding:62px 0}.routes{padding:10px 18px 22px}.calc-head,.controls,.result{padding-left:20px;padding-right:20px}.calc-head{padding-top:25px}.route{padding:16px}.fact{padding:14px 16px}.controls{padding-top:26px;padding-bottom:26px}.result{padding-top:28px;padding-bottom:28px}.result-grid{gap:18px 12px}.metric strong{font-size:29px}.metric strong.compact{font-size:19px}.process-wrap{width:calc(100% - 40px);padding:68px 0}.steps{gap:0;margin-top:34px}.step{min-height:auto;padding:24px 20px;border-top:1px solid rgba(24,32,22,.12)}.closing{min-height:620px;background-position:58% center}.closing-inner{width:calc(100% - 40px);min-height:620px;padding:78px 0;gap:30px;align-content:end}.closing p{font-size:15px;padding:18px}.footer-inner{width:calc(100% - 40px);flex-direction:column}.proposal-pill{font-size:9px;padding:8px 10px}.brand{font-size:17px}}
+    @media(max-width:430px){.nav{align-items:flex-start}.proposal-pill{max-width:112px;text-align:center;line-height:1.4}.hero{min-height:620px}.hero-inner{padding-top:132px}.facts{grid-template-columns:1fr 1fr}.fact:last-child{grid-column:1/-1}.calculator{border-radius:18px}.calc-head h2{font-size:31px}.counter{justify-content:center}.control-label{text-align:center}.note{text-align:left}.result-grid{grid-template-columns:1fr 1fr}.demo-button{width:100%}.route-strip span{padding:11px 18px;font-size:9px}}
+    @media(prefers-reduced-motion:reduce){.route-strip-track{animation:none}.reveal{opacity:1;transform:none}.calculator{animation:none}.scene{translate:none;scale:1}.scroll-progress{display:none}}
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <nav class="nav" aria-label="Identidad de la propuesta">
+    <div class="brand"><span class="brand-dot"></span>Reforestall × TAQSA</div>
+    <span class="proposal-pill">Propuesta conceptual</span>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>Cada viaje por la Patagonia puede dejar una huella positiva</h1>
+      <p class="hero-copy">Una experiencia pensada para que quienes viajan con TAQSA puedan conocer una estimación del impacto de su recorrido y elegir compensarlo junto a Reforestall.</p>
+      <div class="facts">
+        <div class="fact"><small>Territorio</small><strong>Patagonia argentina</strong></div>
+        <div class="fact"><small>Compensación</small><strong>$100 por kg de CO₂</strong></div>
+        <div class="fact"><small>Alcance</small><strong>Argentina + Chile</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="route-strip" aria-hidden="true"><div class="route-strip-track">
+    <span>El Calafate <i>●</i> El Chaltén <i>●</i> Ushuaia <i>●</i> Punta Arenas <i>●</i> Patagonia en movimiento <i>●</i></span>
+    <span>El Calafate <i>●</i> El Chaltén <i>●</i> Ushuaia <i>●</i> Punta Arenas <i>●</i> Patagonia en movimiento <i>●</i></span>
+  </div></div>
+
+  <main>
+    <section class="section intro reveal scene">
+      <h2>Conectar destinos y cuidar el territorio</h2>
+      <div>
+        <p class="intro-copy">TAQSA conecta destinos centrales de la Patagonia, entre ellos El Calafate, El Chaltén y Ushuaia, además de operar una frecuencia entre Ushuaia y Punta Arenas. Esta propuesta suma una acción ambiental simple al viaje, sin modificar la experiencia de compra.</p>
+        <a class="source-link" href="https://taqsa.com.ar/" target="_blank" rel="noopener">Conocer TAQSA ↗</a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="simulador-title">
+      <div class="calculator reveal scene">
+        <div class="calc-head">
+          <h2 id="simulador-title">Simulá la compensación de un viaje</h2>
+          <p>Elegí un recorrido e indicá cuántas personas viajaron.</p>
+        </div>
+        <div class="routes" role="group" aria-label="Elegir recorrido">
+          <button class="route active" type="button" data-route="chalten"><small>Ruta 01</small><strong>El Calafate ↔ El Chaltén</strong><span>Una conexión esencial entre dos íconos de Santa Cruz.</span></button>
+          <button class="route" type="button" data-route="regional"><small>Ruta 02</small><strong>Recorrido regional</strong><span>Una simulación para trayectos de media distancia en Santa Cruz.</span></button>
+          <button class="route" type="button" data-route="chile"><small>Ruta 03</small><strong>Ushuaia ↔ Punta Arenas</strong><span>Una experiencia internacional entre Argentina y Chile.</span></button>
+        </div>
+        <div class="calc-body">
+          <div class="controls">
+            <div class="control-label">Cantidad de pasajeros</div>
+            <div class="counter"><button id="minus" type="button" aria-label="Quitar una persona">−</button><output id="passengers">1</output><button id="plus" type="button" aria-label="Agregar una persona">+</button></div>
+            <p class="note">La estimación es ilustrativa y deberá validarse con datos operativos reales de TAQSA antes de una implementación comercial.</p>
+          </div>
+          <div class="result" aria-live="polite">
+            <div class="result-grid">
+              <div class="metric"><small>Impacto estimado</small><strong><span id="kg">18</span> kg</strong></div>
+              <div class="metric"><small>Aporte sugerido</small><strong class="compact">$<span id="amount">1.800</span></strong></div>
+              <div class="metric token"><small>Por operación</small><strong class="compact">1 token</strong></div>
+            </div>
+            <button class="demo-button" type="button" id="demo">Simular compensación</button>
+            <p class="demo-caption" id="demo-caption">Demostración conceptual: no realiza cobros ni genera tokens reales.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="process-wrap">
+        <h2>Del pasaje a una acción concreta</h2>
+        <div class="steps reveal scene">
+          <article class="step"><h3>Elegir el viaje</h3><p>El recorrido queda identificado dentro de la experiencia de compra.</p></article>
+          <article class="step"><h3>Estimar el impacto</h3><p>Se calcula una referencia ambiental según el trayecto y los pasajeros.</p></article>
+          <article class="step"><h3>Compensar</h3><p>La persona decide si desea sumar el aporte a su operación.</p></article>
+          <article class="step"><h3>Recibir el token</h3><p>La operación genera un único token trazable, sin importar los kg compensados.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="closing-inner reveal scene">
+        <h2>Viajar, conocer y devolverle algo al territorio</h2>
+        <p>TAQSA moviliza personas a través de algunos de los paisajes más valiosos de la Patagonia. Reforestall puede transformar cada recorrido en una oportunidad voluntaria de compromiso ambiental, clara para el pasajero y medible para la empresa.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="footer-inner"><span>Propuesta privada · TAQSA × Reforestall</span><span>Concepto demostrativo, no constituye una integración comercial activa.</span></div></footer>
+
+  <script>
+    const PRICE_PER_KG = 100;
+    const routes = { chalten: 18, regional: 24, chile: 32 };
+    let selected = "chalten";
+    let passengers = 1;
+    const passengerOutput = document.querySelector("#passengers");
+    const kgOutput = document.querySelector("#kg");
+    const amountOutput = document.querySelector("#amount");
+    const render = () => {
+      const kg = routes[selected] * passengers;
+      passengerOutput.textContent = passengers;
+      kgOutput.textContent = kg.toLocaleString("es-AR");
+      amountOutput.textContent = (kg * PRICE_PER_KG).toLocaleString("es-AR");
+      document.querySelector(".result").style.setProperty("--impact-width", Math.min(100, 18 + passengers * 5) + "%");
+      document.querySelectorAll(".metric strong").forEach(item => {
+        item.animate([{ transform: "translateY(4px)", opacity: .65 }, { transform: "none", opacity: 1 }], { duration: 220 });
+      });
+    };
+    document.querySelectorAll(".route").forEach(button => button.addEventListener("click", () => {
+      document.querySelectorAll(".route").forEach(item => item.classList.remove("active"));
+      button.classList.add("active");
+      selected = button.dataset.route;
+      render();
+    }));
+    document.querySelector("#minus").addEventListener("click", () => { passengers = Math.max(1, passengers - 1); render(); });
+    document.querySelector("#plus").addEventListener("click", () => { passengers = Math.min(50, passengers + 1); render(); });
+    document.querySelector("#demo").addEventListener("click", () => {
+      document.querySelector("#demo-caption").textContent = "Simulación completada. En esta propuesta no se realizó ningún cobro ni se emitió un token real.";
+    });
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("visible"); });
+    }, { threshold: .12 });
+    document.querySelectorAll(".reveal").forEach(item => revealObserver.observe(item));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let scrollFrame = null;
+    const updateCinematicScroll = () => {
+      scrollFrame = null;
+      const maxScroll = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+      document.documentElement.style.setProperty("--scroll-progress", (scrollY / maxScroll * 100) + "%");
+      if (reduceMotion) return;
+      document.querySelector(".hero").style.setProperty("--hero-shift", Math.min(46, scrollY * .085) + "px");
+      const center = innerHeight / 2;
+      document.querySelectorAll(".scene").forEach(scene => {
+        const box = scene.getBoundingClientRect();
+        const distance = (box.top + box.height / 2 - center) / innerHeight;
+        const closeness = Math.max(0, 1 - Math.abs(distance));
+        scene.style.setProperty("--scene-y", Math.max(-22, Math.min(22, distance * -18)) + "px");
+        scene.style.setProperty("--scene-scale", (.975 + closeness * .025).toFixed(3));
+      });
+      const closing = document.querySelector(".closing");
+      const closingTop = closing.getBoundingClientRect().top;
+      closing.style.setProperty("--ring-rotation", (scrollY * .025) + "deg");
+      closing.style.setProperty("--orb-x", Math.max(-45, Math.min(45, closingTop * -.025)) + "px");
+      closing.style.setProperty("--orb-y", Math.max(-30, Math.min(30, closingTop * .018)) + "px");
+    };
+    window.addEventListener("scroll", () => {
+      if (!scrollFrame) scrollFrame = requestAnimationFrame(updateCinematicScroll);
+    }, { passive: true });
+    updateCinematicScroll();
+  </script>
+</body>
+</html>
